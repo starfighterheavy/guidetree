@@ -1,0 +1,9 @@
+- level = 0
+- level_nodes = @nodes.select{ |node| node.level == level }
+- while level_nodes.any?
+  div id="level_#{level}" class="level"
+    - level_nodes.each do |node|
+      div class="node" style="height: #{node.width * 100}px; background-color: whitesmoke;" data-width="#{node.width}"= node.title
+  - level += 1
+  - level_nodes = @nodes.select{ |node| node.level == level }
+
