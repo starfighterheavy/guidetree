@@ -5,6 +5,8 @@ class Objective < ActiveRecord::Base
   has_many :children, through: :parent_relationships
   has_many :objective_traits
 
+  before_destroy :check_for_children
+
   after_commit do
     next unless @parent_id.present?
     parent = Objective.find(@parent_id)
@@ -18,5 +20,13 @@ class Objective < ActiveRecord::Base
 
   def parent_id
     parents.first&.id
+  end
+
+  private
+
+  def check_for_children
+    return unless Dependency.where(parent: self).any?
+    errors[:base] << "Objective cannot be deleted while it has children"
+    throw :abort
   end
 end

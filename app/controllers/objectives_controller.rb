@@ -30,7 +30,9 @@ class ObjectivesController < ApplicationController
   end
 
   def destroy
-    @objective.destroy
+    unless @objective.destroy
+      flash[:error] = @objective.errors.full_messages.join(".")
+    end
     redirect_to tree_path
   end
 
