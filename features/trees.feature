@@ -13,7 +13,6 @@ Feature: Trees are displayed correctly
 
   Scenario: All objectives are displayed in the correct depth
     When I go to the root page
-    Then I print the page
     Then I should see that node "0-A" is in level 0 and has width of 3
     Then I should see that node "1-A" is in level 1 and has width of 2
     Then I should see that node "1-B" is in level 1 and has width of 1
