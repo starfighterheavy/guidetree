@@ -1,3 +1,77 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.tree-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
 .level {
-  display: inline-table;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.node {
+  height: 100px;
+  vertical-align: middle;
+}
+
+.node-content {
+  padding: 20px;
+  background-color: whitesmoke;
+}
+
+.node-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.node-container-1 {
+  height: 100px;
+}
+
+.node-container-2 {
+  height: 200px;
+}
+
+.node-container-3 {
+  height: 300px;
+}
+
+.node-container-4 {
+  height: 400px;
+}
+
+.node-container-5 {
+  height: 500px;
+}
+
+.node-container-6 {
+  height: 600px;
+}
+
+.node-container-7 {
+  height: 700px;
+}
+
+.node-container-8 {
+  height: 800px;
+}
+
+.node-container-9 {
+  height: 900px;
+}
+
+.node-container-10 {
+  height: 1000px;
+}
+
+.node-container-11 {
+  height: 1100px;
 }

@@ -7,31 +7,41 @@ class TreesController < ApplicationController
 
   def generate_tree
     @root = Objective.where.not(id: Dependency.select(:parent_id).uniq).first
-    @id = 0
+    @order = 0
     node = Node.new(@root, nil, 0)
     @nodes = [node]
     traverse_branch(node)
   end
 
   def traverse_branch(parent)
+    add_blank_node(parent) if parent.children.empty?
     parent.children.each do |child|
-      @id += 1
-      node = Node.new(child, parent, @id)
+      @order += 1
+      node = Node.new(child, parent, @order)
       @nodes << node
       traverse_branch(node)
     end
     parent.finished!
   end
 
-  class Node
-    attr_reader :objective, :parent, :id, :level, :width, :o_id
+  def add_blank_node(parent)
+    @order += 1
+    @nodes << Node.new(nil, parent, @order)
+  end
 
-    def initialize(objective, parent, id)
-      @objective = objective
+  class Node
+    attr_reader :objective, :parent, :order, :level, :width, :o_id
+
+    def initialize(objective, parent, order)
+      @objective = objective || OpenStruct.new
       @parent = parent
-      @id = id
+      @order = order
       @level = (parent&.level || -1) + 1
       @o_id = object_id
+    end
+
+    def id
+      @objective.id
     end
 
     def children

@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'trees#show'
 
   resource :tree
+
+  resources :objectives
 end
