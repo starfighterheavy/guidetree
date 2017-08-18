@@ -2,4 +2,4 @@ h1= @objective.title
 p= @objective.description
 p= link_to "Edit", edit_objective_path(@objective)
 p= link_to "Delete", objective_path(@objective), method: :delete
-p= link_to "New Child", new_objective_path(parent_id: @objective.id)
+p= link_to "New Child", new_objective_path(parent_id: @objective.id, tree_id: @objective.tree_id || params[:tree_id])

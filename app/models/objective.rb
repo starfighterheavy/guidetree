@@ -1,4 +1,5 @@
 class Objective < ActiveRecord::Base
+  belongs_to :tree
   has_many :parent_relationships, class_name: :Dependency, foreign_key: :parent_id
   has_many :child_relationships, class_name: :Dependency, foreign_key: :child_id
   has_many :parents, through: :child_relationships

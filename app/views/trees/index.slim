@@ -1,0 +1,3 @@
+ul
+  - @trees.each do |tree|
+    li= link_to tree.name, tree_path(tree)

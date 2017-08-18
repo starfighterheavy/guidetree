@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :objective do
+    association :tree
     title 'Knights Oath'
     description 'Swear the knights oath to with the trust of Knights of the Relm units'
 

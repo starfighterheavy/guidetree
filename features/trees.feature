@@ -4,15 +4,17 @@ Feature: Trees are displayed correctly
   So that I can understand the paths available to me.
 
   Background:
-    Given there is an objective with the title "0-A"
-    And there is an objective with the title "1-A" and the parent "0-A"
-    And there is an objective with the title "1-B" and the parent "0-A"
-    And there is an objective with the title "2-A-A" and the parent "1-A"
-    And there is an objective with the title "2-A-B" and the parent "1-A"
-    And there is an objective with the title "2-B-A" and the parent "1-B"
+    Given there is a tree with the name "Tree"
+    And there is an objective with the title "0-A" and the tree "Tree"
+    And there is an objective with the title "1-A" and the parent "0-A" and the tree "Tree"
+    And there is an objective with the title "1-B" and the parent "0-A" and the tree "Tree"
+    And there is an objective with the title "2-A-A" and the parent "1-A" and the tree "Tree"
+    And there is an objective with the title "2-A-B" and the parent "1-A" and the tree "Tree"
+    And there is an objective with the title "2-B-A" and the parent "1-B" and the tree "Tree"
 
   Scenario: All objectives are displayed in the correct depth
     When I go to the root page
+    And I click on "Tree"
     Then I should see that node "0-A" is in level 0 and has width of 3
     Then I should see that node "1-A" is in level 1 and has width of 2
     Then I should see that node "1-B" is in level 1 and has width of 1

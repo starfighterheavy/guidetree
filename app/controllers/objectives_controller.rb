@@ -1,5 +1,6 @@
 class ObjectivesController < ApplicationController
   before_action :load_objective, except: [:new, :create]
+  before_action :load_tree, only: [:create, :new]
 
   def new
     @objective = Objective.new
@@ -7,11 +8,11 @@ class ObjectivesController < ApplicationController
   end
 
   def create
-    @objective = Objective.new(objective_params)
+    @objective = @tree.objectives.new(objective_params)
     unless @objective.save
       flash[:error] = @objective.errors.full_messages.join(".")
     end
-    redirect_to tree_path
+    redirect_to tree_path(@objective.tree.id)
   end
 
   def show
@@ -26,14 +27,14 @@ class ObjectivesController < ApplicationController
     unless @objective.save
       flash[:error] = @objective.errors.full_messages.join(".")
     end
-    redirect_to tree_path
+    redirect_to tree_path(@objective.tree.id)
   end
 
   def destroy
     unless @objective.destroy
       flash[:error] = @objective.errors.full_messages.join(".")
     end
-    redirect_to tree_path
+    redirect_to tree_path(@objective.tree.id)
   end
 
   private
@@ -44,5 +45,9 @@ class ObjectivesController < ApplicationController
 
   def load_objective
     @objective = Objective.find(params[:id])
+  end
+
+  def load_tree
+    @tree = Tree.find(params[:tree_id])
   end
 end

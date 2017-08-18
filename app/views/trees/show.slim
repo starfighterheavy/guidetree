@@ -1,14 +1,9 @@
-- level = 0
-- level_nodes = @nodes.select{ |node| node.level == level }
-= link_to "New Objective", new_objective_path, style: 'float: right;'
-div.tree-container style="height: #{level_nodes.sum(&:width)*100}px;"
-  - while level_nodes.any?
-    div id="level_#{level}" class="level"
-      - level_nodes.each do |node|
+= link_to "New Objective", new_tree_objective_path(tree_id: @tree.id), style: 'float: right;'
+div.tree-container style="height: #{@tree.levels.first.sum(&:width)*100}px;"
+  - @tree.levels.each_with_index do |level, index|
+    div id="level_#{index}" class="level"
+      - level.each do |node|
         div class="node-container node-container-#{node.width}" data-width="#{node.width}"
           div class='node'
             - if node.id
               div class='node-content'= link_to node.title, objective_path(node.id)
-    - level += 1
-    - level_nodes = @nodes.select{ |node| node.level == level }
-
