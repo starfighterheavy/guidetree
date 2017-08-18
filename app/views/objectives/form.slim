@@ -1,5 +1,5 @@
 = simple_form_for [@tree, @objective] do |f|
-  = f.input :parent_id, collection: Objective.all.map { |o| [o.title, o.id] }, label: "Parent", selected: params[:parent_id] || @objective.parent_id
+  = f.input :parent_id, collection: Objective.all.map { |o| [o.title, o.id] }, label: "Parent", selected: params[:parent_id] || @objective.parent_id, include_blank: true
   = f.input :title
   = f.submit "Save"
 

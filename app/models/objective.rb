@@ -8,6 +8,8 @@ class Objective < ActiveRecord::Base
 
   before_destroy :check_for_children
 
+  validate :parent_self_assignment
+
   after_commit do
     next unless @parent_id.present?
     parent = Objective.find(@parent_id)
@@ -24,6 +26,12 @@ class Objective < ActiveRecord::Base
   end
 
   private
+
+  def parent_self_assignment
+    return unless @parent_id.to_i == id
+    errors[:base] << "Objective cannot be a parent of itself"
+    throw :abort
+  end
 
   def check_for_children
     return unless Dependency.where(parent: self).any?

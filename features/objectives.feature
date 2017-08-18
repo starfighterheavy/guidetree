@@ -29,6 +29,15 @@ Feature: Objectives
     And I press "Save"
     Then I should see that node "My updated title" is in level 2 and has width of 1
 
+  Scenario: System prevents assigning self as parent
+    When I go to the root page
+    And I click on "My Tree"
+    And I click on "1-A"
+    And I click on "Edit"
+    And I select "1-A" from "Parent"
+    And I press "Save"
+    Then I should see "Objective cannot be a parent of itself"
+
   Scenario: User delete an objective
     When I go to the root page
     And I click on "My Tree"
