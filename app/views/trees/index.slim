@@ -1,3 +1,4 @@
+= link_to "New Tree", new_tree_path
 ul
   - @trees.each do |tree|
     li= link_to tree.name, tree_path(tree)

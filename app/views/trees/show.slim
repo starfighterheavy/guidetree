@@ -1,3 +1,4 @@
+h1= @tree.name
 = link_to "New Objective", new_tree_objective_path(tree_id: @tree.id), style: 'float: right;'
 div.tree-container style="height: #{@tree.levels.first.sum(&:width)*100}px;"
   - @tree.levels.each_with_index do |level, index|

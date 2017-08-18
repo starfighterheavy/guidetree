@@ -3,12 +3,13 @@ class TreesController < ApplicationController
 
   def new
     @tree = Tree.new
+    render "form"
   end
 
   def create
     tree = Tree.new(tree_params)
     if tree.save
-      redirect_to tree_path
+      redirect_to tree_path(tree.id)
     else
       flash[:error] = tree.errors.full_messages.join('.')
       redirect_to new_tree_path
