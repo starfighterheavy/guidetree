@@ -34,9 +34,7 @@ Feature: Objectives
     And I click on "My Tree"
     And I click on "1-A"
     And I click on "Edit"
-    And I select "1-A" from "Parent"
-    And I press "Save"
-    Then I should see "Objective cannot be a parent of itself"
+    Then "1-A" should not be an option for "Parent"
 
   Scenario: User delete an objective
     When I go to the root page

@@ -17,6 +17,13 @@ class Objective < ActiveRecord::Base
     Dependency.create!(child: self, parent: parent)
   end
 
+  def potential_parents
+    self.class
+      .all
+      .select { |o| o.id != id }
+      .map { |o| [o.title, o.id] }
+  end
+
   def parent_id=(parent_id)
     @parent_id = parent_id
   end
