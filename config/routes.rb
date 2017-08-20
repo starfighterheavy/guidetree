@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   end
 
   resources :objectives do
-    resources :completions, controller: 'objectives/completions'
+    resources :completions, controller: 'objectives/completions', only: [:new, :create]
+    resources :objective_traits, controller: 'objectives/objective_traits'
   end
 
   resources :traits

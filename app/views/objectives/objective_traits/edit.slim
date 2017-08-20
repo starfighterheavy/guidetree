@@ -1,0 +1,5 @@
+= link_to "Remove", objective_objective_trait_path, method: :delete
+= simple_form_for @objective_trait, url: objective_objective_trait_path(objective_id: @objective, id: @objective_trait.id), method: :patch do |f|
+  = f.input :amount
+  = f.input :trait_id, collection: Trait.all.map { |t| [t.title, t.id] }
+  = f.submit "Save"

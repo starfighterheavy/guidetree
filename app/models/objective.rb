@@ -32,6 +32,10 @@ class Objective < ActiveRecord::Base
     parents.first&.id
   end
 
+  def completed?
+    completed_at.present?
+  end
+
   private
 
   def parent_self_assignment

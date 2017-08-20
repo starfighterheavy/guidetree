@@ -24,6 +24,10 @@ body {
 .node-content {
   padding: 20px;
   background-color: whitesmoke;
+
+  &.node-completed-true {
+    background-color: green;
+  }
 }
 
 .node-container {

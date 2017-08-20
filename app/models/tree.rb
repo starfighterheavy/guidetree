@@ -58,28 +58,14 @@ class Tree < ActiveRecord::Base
   class Branch
     attr_reader :objective, :parent, :order, :level, :width, :o_id
 
+    delegate :completed?, :id, :children, :title, :description, to: :objective
+
     def initialize(objective, parent, order)
       @objective = objective || OpenStruct.new
       @parent = parent
       @order = order
       @level = (parent&.level || -1) + 1
       @o_id = object_id
-    end
-
-    def id
-      @objective.id
-    end
-
-    def children
-      @objective.children
-    end
-
-    def title
-      @objective.title
-    end
-
-    def description
-      @objective.description
     end
 
     def finished!
@@ -91,5 +77,4 @@ class Tree < ActiveRecord::Base
       @width = (@width || 0) + child_width
     end
   end
-
 end

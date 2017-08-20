@@ -1,0 +1,4 @@
+= simple_form_for @objective_trait, url: objective_objective_traits_path(@objective), method: :post do |f|
+  = f.input :amount
+  = f.input :trait_id, collection: Trait.all.map { |t| [t.title, t.id] }
+  = f.submit "Save"

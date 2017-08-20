@@ -7,4 +7,4 @@ div.tree-container style="height: #{@tree.levels.first.sum(&:width)*100}px;"
         div class="node-container node-container-#{node.width}" data-width="#{node.width}"
           div class='node'
             - if node.id
-              div class='node-content'= link_to node.title, objective_path(node.id)
+              div class='node-content node-completed-#{node.completed?}'= link_to node.title, objective_path(node.id)
