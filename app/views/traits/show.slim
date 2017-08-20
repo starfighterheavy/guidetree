@@ -1,0 +1,5 @@
+h1= @trait.title
+p= @trait.description
+p= link_to "Edit", edit_trait_path(@trait)
+p= link_to "Delete", trait_path(@trait), method: :delete
+p= link_to "New Child", new_trait_path

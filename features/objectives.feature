@@ -19,7 +19,7 @@ Feature: Objectives
     And I press "Save"
     Then I should see that node "My new title" is in level 1 and has width of 1
 
-  Scenario: User update an objective
+  Scenario: User can update an objective
     When I go to the root page
     And I click on "My Tree"
     And I click on "2-A-A"
@@ -29,6 +29,16 @@ Feature: Objectives
     And I press "Save"
     Then I should see that node "My updated title" is in level 2 and has width of 1
 
+  Scenario: User can complete an objective
+    When I go to the root page
+    And I click on "My Tree"
+    And I click on "2-A-A"
+    And I click on "Complete"
+    And I fill in "Note" with "I did it!"
+    And I press "Save"
+    Then I should see "Completed"
+    And I should see "I did it!"
+
   Scenario: System prevents assigning self as parent
     When I go to the root page
     And I click on "My Tree"
@@ -36,7 +46,7 @@ Feature: Objectives
     And I click on "Edit"
     Then "1-A" should not be an option for "Parent"
 
-  Scenario: User delete an objective
+  Scenario: User can delete an objective
     When I go to the root page
     And I click on "My Tree"
     And I click on "2-A-A"

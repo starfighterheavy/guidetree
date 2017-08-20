@@ -1,0 +1,4 @@
+= link_to "New", new_trait_path
+ul
+  - @traits.each do |trait|
+    li= link_to trait.title, trait_path(trait)
