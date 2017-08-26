@@ -3,7 +3,7 @@ p= @objective.description
 - if @objective.objective_traits.any?
   ul
     - @objective.objective_traits.each do |trait|
-      li= link_to "#{trait.amount >= 0 ? '+' : '-'} #{trait.amount} #{trait.title}", edit_objective_objective_trait_path(objective_id: @objective, id: trait.id)
+      li= link_to "#{trait.amount >= 0 ? '+ ' : ''}#{trait.amount} #{trait.title}", edit_objective_objective_trait_path(objective_id: @objective, id: trait.id)
 p= link_to "Edit", edit_objective_path(@objective)
 p= link_to "Add Trait", new_objective_objective_trait_path(@objective)
 - if @objective.completed_at?
