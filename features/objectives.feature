@@ -36,8 +36,7 @@ Feature: Objectives
     And I click on "Complete"
     And I fill in "Note" with "I did it!"
     And I press "Save"
-    Then I should see "Completed"
-    And I should see "I did it!"
+    Then I should see "My Tree"
 
   Scenario: System prevents assigning self as parent
     When I go to the root page

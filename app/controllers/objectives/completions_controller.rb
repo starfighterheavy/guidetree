@@ -8,7 +8,7 @@ class Objectives::CompletionsController < ApplicationController
   def create
     @objective.assign_attributes(completion_params)
     @objective.save!
-    redirect_to objective_path(@objective)
+    redirect_to tree_path(@objective.tree)
   end
 
   private
