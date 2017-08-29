@@ -51,8 +51,10 @@ class Tree < ActiveRecord::Base
   end
 
   def add_blank_branch(parent)
-    @order += 1
-    @branches << Branch.new(nil, parent, @order)
+    (1..10).each do
+      @order += 1
+      @branches << Branch.new(nil, @branches.last, @order)
+    end
   end
 
   class Branch
