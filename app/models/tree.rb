@@ -60,7 +60,7 @@ class Tree < ActiveRecord::Base
   class Branch
     attr_reader :objective, :parent, :order, :level, :width, :o_id
 
-    delegate :completed?, :id, :children, :title, :description, to: :objective
+    delegate :completed?, :id, :children, :title, :description, :objective_traits, to: :objective
 
     def initialize(objective, parent, order)
       @objective = objective || OpenStruct.new
