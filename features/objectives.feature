@@ -58,3 +58,10 @@ Feature: Objectives
     And I click on "1-A"
     And I click on "Delete"
     Then I should see "Objective cannot be deleted while it has children"
+
+  Scenario: User can navigate from objective back to tree
+    When I go to the root page
+    And I click on "My Tree"
+    And I click on "1-A"
+    And I click on "My Tree"
+    Then I should see "0-A"
