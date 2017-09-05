@@ -17,6 +17,8 @@ Feature: Objective Traits
     And I select "Armor" from "Trait"
     And I press "Save"
     Then I should see "+10 Armor"
+    When I click on "My Tree"
+    Then I should see "+10 Armor"
 
   Scenario: User can update an objective
     Given there is an objective trait with the amount "10" and the objective "0-A" and the trait "Armor"
