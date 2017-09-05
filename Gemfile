@@ -15,7 +15,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'slim'
 gem 'simple_form'
 gem 'dotenv-rails'
-
+gem 'gretel', '~> 3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
