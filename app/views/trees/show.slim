@@ -1,10 +1,15 @@
 h1= @tree.name
 = link_to "New Objective", new_tree_objective_path(tree_id: @tree.id), style: 'float: right;'
-div.tree-container style="height: #{@tree.levels.first.sum(&:width)*100}px;"
+div.tree-container style="height: #{@tree.levels.first.sum(&:width)*250}px;"
   - @tree.levels.each_with_index do |level, index|
     div id="level_#{index}" class="level"
       - level.each do |node|
-        div class="node-container node-container-#{node.width}" data-width="#{node.width}"
+        div class="node-container node-container-#{node.width || 1} #{node.width ? '' : 'placeholder'}" data-width="#{node.width}"
           div class='node'
             - if node.id
-              div class='node-content node-completed-#{node.completed?}'= link_to node.title, objective_path(node.id)
+              div class='node-content node-completed-#{node.completed?}'
+                h4 = link_to node.title, objective_path(node.id)
+                ul
+                  - node.objective_traits.each do |trait|
+                    li= "#{trait.amount >= 0 ? '+' : ''}#{trait.amount} #{trait.title}"
+

@@ -12,18 +12,19 @@ body {
 .level {
   display: flex;
   flex-direction: column;
-  width: 200px;
   margin-right: 10px;
 }
 
 .node {
-  height: 100px;
+  height: 100%;
   vertical-align: middle;
 }
 
 .node-content {
+  height: 100%;
   padding: 20px;
   background-color: whitesmoke;
+  box-sizing: border-box;
 
   &.node-completed-true {
     background-color: green;
@@ -31,51 +32,57 @@ body {
 }
 
 .node-container {
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border: 1px solid black;
+}
+
+.placeholder {
+  visibility: hidden;
 }
 
 .node-container-1 {
-  height: 100px;
+  height: 250px;
 }
 
 .node-container-2 {
-  height: 200px;
-}
-
-.node-container-3 {
-  height: 300px;
-}
-
-.node-container-4 {
-  height: 400px;
-}
-
-.node-container-5 {
   height: 500px;
 }
 
-.node-container-6 {
-  height: 600px;
+.node-container-3 {
+  height: 750px;
 }
 
-.node-container-7 {
-  height: 700px;
-}
-
-.node-container-8 {
-  height: 800px;
-}
-
-.node-container-9 {
-  height: 900px;
-}
-
-.node-container-10 {
+.node-container-4 {
   height: 1000px;
 }
 
+.node-container-5 {
+  height: 1250px;
+}
+
+.node-container-6 {
+  height: 1500px;
+}
+
+.node-container-7 {
+  height: 1750px;
+}
+
+.node-container-8 {
+  height: 2000px;
+}
+
+.node-container-9 {
+  height: 2250px;
+}
+
+.node-container-10 {
+  height: 2500px;
+}
+
 .node-container-11 {
-  height: 1100px;
+  height: 2750x;
 }
