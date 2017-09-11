@@ -10,14 +10,28 @@ Feature: Objectives
     And there is an objective with the title "1-B" and the parent "0-A" and the tree "My Tree"
     And there is an objective with the title "2-A-A" and the parent "1-A" and the tree "My Tree"
 
-  Scenario: User can create an objective
+  Scenario: User can create a new root objective
     When I go to the root page
     And I click on "My Tree"
     And I click on "New Objective"
-    And I select "0-A" from "Parent"
+    Then "0-A" should be an option for "Parent"
+    And "1-A" should not be an option for "Parent"
+    And "1-B" should not be an option for "Parent"
+    And "2-A-A" should not be an option for "Parent"
+    When I select "0-A" from "Parent"
     And I fill in "Title" with "My new title"
     And I press "Save"
     Then I should see that node "My new title" is in level 1 and has width of 1
+
+  Scenario: User can create a new child objective
+    When I go to the root page
+    And I click on "My Tree"
+    And I click on "1-A"
+    And I click on "New Child"
+    Then I should see "1-A > New Child"
+    When I fill in "Title" with "My new title"
+    And I press "Save"
+    Then I should see that node "My new title" is in level 2 and has width of 1
 
   Scenario: User can update an objective
     When I go to the root page

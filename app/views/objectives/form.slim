@@ -1,5 +1,10 @@
 = simple_form_for [@tree, @objective] do |f|
-  = f.input :parent_id, collection: @objective.potential_parents, label: "Parent", selected: params[:parent_id] || @objective.parent_id, include_blank: true
+  - if @parent
+    - breadcrumb :objective, @parent
+    h2= sanitize(breadcrumbs.to_s) + " > New Child"
+    = f.hidden_field :parent_id, value: params[:parent_id]
+  - else
+    = f.input :parent_id, collection: (@objective.persisted? ? @objective.potential_parents : Objective.roots), label: "Parent", selected: @parent&.id || @objective.parent_id, include_blank: true
   = f.input :title
   = f.submit "Save"
 

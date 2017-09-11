@@ -4,6 +4,7 @@ class ObjectivesController < ApplicationController
 
   def new
     @objective = Objective.new
+    @parent = Objective.find(params[:parent_id]) if params[:parent_id]
     render "form"
   end
 

@@ -2,7 +2,7 @@ class Tree < ActiveRecord::Base
   has_many :objectives
 
   def root_branches
-    objectives.where.not(id: Dependency.pluck(:child_id).uniq)
+    objectives.roots
   end
 
   def levels

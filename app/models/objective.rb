@@ -17,6 +17,10 @@ class Objective < ActiveRecord::Base
     Dependency.create!(child: self, parent: parent)
   end
 
+  def self.roots
+    where.not(id: Dependency.pluck(:child_id).uniq)
+  end
+
   def potential_parents
     self.class
       .all
