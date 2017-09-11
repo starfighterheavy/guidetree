@@ -13,7 +13,7 @@ class ObjectivesController < ApplicationController
     unless @objective.save
       flash[:error] = @objective.errors.full_messages.join(".")
     end
-    redirect_to tree_path(@objective.tree.id)
+    redirect_to objective_path(@objective)
   end
 
   def show
