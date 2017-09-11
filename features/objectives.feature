@@ -17,9 +17,10 @@ Feature: Objectives
     And I fill in "Title" with "My new title"
     And I fill in "Description" with "My new description"
     And I press "Save"
-    Then I should see that node "My new title" is in level 0 and has width of 1
-    When I click on "My new title"
+    Then I should see "My new title"
     Then I should see "My new description"
+    When I click on "My Tree"
+    Then I should see that node "My new title" is in level 0 and has width of 1
 
   Scenario: User can create a new child objective
     When I go to the root page
@@ -30,6 +31,9 @@ Feature: Objectives
     When I fill in "Title" with "My new title"
     And I fill in "Description" with "My new description"
     And I press "Save"
+    Then I should see "My new title"
+    And I should see "My new description"
+    When I click on "My Tree"
     Then I should see that node "My new title" is in level 2 and has width of 1
 
   Scenario: User can update an objective

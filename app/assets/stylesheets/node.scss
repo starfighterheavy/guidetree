@@ -12,18 +12,20 @@ body {
 .level {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 400px;
   margin-right: 10px;
 }
 
 .node {
-  height: 250px;
+  height: 100%;
   vertical-align: middle;
 }
 
 .node-content {
+  height: 100%;
   padding: 20px;
   background-color: whitesmoke;
+  box-sizing: border-box;
 
   &.node-completed-true {
     background-color: green;
@@ -31,9 +33,15 @@ body {
 }
 
 .node-container {
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border: 1px solid black;
+}
+
+.placeholder {
+  visibility: hidden;
 }
 
 .node-container-1 {
