@@ -10,3 +10,9 @@ crumb :objective do |objective|
   link objective.title, objective
   parent :tree, objective.tree
 end
+
+crumb :new_child do |objective|
+  link "New Child", objective
+  parent :objective, parent
+  parent :tree, objective.tree
+end

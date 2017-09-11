@@ -14,21 +14,16 @@ Feature: Objectives
     When I go to the root page
     And I click on "My Tree"
     And I click on "New Objective"
-    Then "0-A" should be an option for "Parent"
-    And "1-A" should not be an option for "Parent"
-    And "1-B" should not be an option for "Parent"
-    And "2-A-A" should not be an option for "Parent"
-    When I select "0-A" from "Parent"
     And I fill in "Title" with "My new title"
     And I press "Save"
-    Then I should see that node "My new title" is in level 1 and has width of 1
+    Then I should see that node "My new title" is in level 0 and has width of 1
 
   Scenario: User can create a new child objective
     When I go to the root page
     And I click on "My Tree"
     And I click on "1-A"
     And I click on "New Child"
-    Then I should see "1-A > New Child"
+    Then I should see "1-A>New Child"
     When I fill in "Title" with "My new title"
     And I press "Save"
     Then I should see that node "My new title" is in level 2 and has width of 1

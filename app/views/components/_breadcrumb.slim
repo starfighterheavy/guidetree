@@ -1,0 +1,9 @@
+div.breadcrumbs
+  - links.each_with_index do |link, index|
+    - unless index == 0
+      span class='breadcrumb--connector' >
+
+    - if index == (links.size - 1)
+      span class='breadcrumb--current'= link[0]
+    - else
+      = link_to link[0], link[1]

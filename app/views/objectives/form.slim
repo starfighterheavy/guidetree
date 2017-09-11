@@ -1,10 +1,13 @@
 = simple_form_for [@tree, @objective] do |f|
   - if @parent
-    - breadcrumb :objective, @parent
-    h2= sanitize(breadcrumbs.to_s) + " > New Child"
+    h2
+      = render "components/breadcrumb", links: [[@parent.title, objective_path(@parent)], ["New Child"]]
     = f.hidden_field :parent_id, value: params[:parent_id]
+  - elsif @objective.persisted?
+    h2 Edit
+    = f.input :parent_id, collection: @objective.potential_parents, label: "Parent", selected: @objective.parent_id, include_blank: true
   - else
-    = f.input :parent_id, collection: (@objective.persisted? ? @objective.potential_parents : Objective.roots), label: "Parent", selected: @parent&.id || @objective.parent_id, include_blank: true
+    h2 New Objective
   = f.input :title
   = f.submit "Save"
 
