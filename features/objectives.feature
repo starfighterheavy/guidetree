@@ -15,8 +15,11 @@ Feature: Objectives
     And I click on "My Tree"
     And I click on "New Objective"
     And I fill in "Title" with "My new title"
+    And I fill in "Description" with "My new description"
     And I press "Save"
     Then I should see that node "My new title" is in level 0 and has width of 1
+    When I click on "My new title"
+    Then I should see "My new description"
 
   Scenario: User can create a new child objective
     When I go to the root page
@@ -25,6 +28,7 @@ Feature: Objectives
     And I click on "New Child"
     Then I should see "1-A>New Child"
     When I fill in "Title" with "My new title"
+    And I fill in "Description" with "My new description"
     And I press "Save"
     Then I should see that node "My new title" is in level 2 and has width of 1
 
@@ -34,6 +38,7 @@ Feature: Objectives
     And I click on "2-A-A"
     And I click on "Edit"
     And I fill in "Title" with "My updated title"
+    And I fill in "Description" with "My updated description"
     And I select "1-A" from "Parent"
     And I press "Save"
     Then I should see that node "My updated title" is in level 2 and has width of 1

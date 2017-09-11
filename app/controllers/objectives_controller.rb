@@ -41,7 +41,7 @@ class ObjectivesController < ApplicationController
   private
 
   def objective_params
-    params.require(:objective).permit(:parent_id, :title)
+    params.require(:objective).permit(:parent_id, :title, :description)
   end
 
   def load_objective
