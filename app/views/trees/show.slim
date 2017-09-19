@@ -1,5 +1,6 @@
 = link_to "New Objective", new_tree_objective_path(tree_id: @tree.id), style: 'float: right;'
-= render "components/breadcrumb", links: [["Home", trees_path], [@tree.name]]
+h1
+  = render "components/breadcrumb", links: [["Home", trees_path], [@tree.name]]
 
 div.tree-container style="height: #{@tree.levels.first.sum(&:width)*250}px;"
   - @tree.levels.each_with_index do |level, index|
