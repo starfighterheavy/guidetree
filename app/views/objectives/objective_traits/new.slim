@@ -2,3 +2,4 @@
   = f.input :amount
   = f.input :trait_id, collection: Trait.all.map { |t| [t.title, t.id] }
   = f.submit "Save"
+  p= link_to "Need a new trait?", new_trait_path, target: "_blank"
