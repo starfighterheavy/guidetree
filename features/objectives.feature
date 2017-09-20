@@ -37,11 +37,14 @@ Feature: Objectives
     Then I should see that node "My new title" is in level 2 and has width of 1
 
   Scenario: User can update an objective
+    Given there is a tree with the name "Other Tree"
+    And there is an objective with the title "Other-A" and the tree "Other Tree"
     When I go to the root page
     And I click on "My Tree"
     And I click on "2-A-A"
     And I click on "Edit"
-    And I fill in "Title" with "My updated title"
+    Then "Other-A" should not be an option for "Parent"
+    When I fill in "Title" with "My updated title"
     And I fill in "Description" with "My updated description"
     And I select "1-A" from "Parent"
     And I press "Save"

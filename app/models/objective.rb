@@ -22,10 +22,9 @@ class Objective < ActiveRecord::Base
   end
 
   def potential_parents
-    self.class
-      .all
-      .select { |o| o.id != id }
-      .map { |o| [o.title, o.id] }
+    tree.objectives
+        .select { |o| o.id != id }
+        .map { |o| [o.title, o.id] }
   end
 
   def parent_id=(parent_id)

@@ -3,7 +3,7 @@ class ObjectivesController < ApplicationController
   before_action :load_tree, only: [:create, :new]
 
   def new
-    @objective = Objective.new
+    @objective = Objective.new(tree: @tree)
     @parent = Objective.find(params[:parent_id]) if params[:parent_id]
     render "form"
   end
