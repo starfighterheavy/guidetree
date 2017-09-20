@@ -46,3 +46,11 @@ Feature: Objective Traits
     And I click on "+10 Armor"
     And I click on "Remove"
     Then I should not see "+10 Armor"
+
+  Scenario: User can create a new trait while creating a new objective trait
+    When I go to the root page
+    And I click on "My Tree"
+    And I click on "0-A"
+    And I click on "Add Trait"
+    And I click on "Need a new trait?"
+    And I should see "Traits>New"
