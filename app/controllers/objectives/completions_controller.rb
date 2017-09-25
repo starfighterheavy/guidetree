@@ -18,6 +18,6 @@ class Objectives::CompletionsController < ApplicationController
   end
 
   def load_objective
-    @objective = Objective.find(params[:objective_id])
+    @objective = current_user.objectives.find(params[:objective_id])
   end
 end

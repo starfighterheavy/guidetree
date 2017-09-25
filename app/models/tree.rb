@@ -1,5 +1,6 @@
 class Tree < ActiveRecord::Base
   has_many :objectives
+  belongs_to :user
 
   def root_branches
     objectives.roots

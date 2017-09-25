@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.action_mailer.default_url_options = { host: 'app.guidetree.org', port: 443 }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

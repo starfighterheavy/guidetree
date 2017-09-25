@@ -4,9 +4,10 @@ Feature: Objective Traits
   So I can know what is accomplished with each objective.
 
   Background:
-    Given there is a tree with the name "My Tree"
+    Given I sign in
+    And there is a tree with the name "My Tree" and the user "user@example.com"
     And there is an objective with the title "0-A" and the tree "My Tree"
-    And there is a trait with the title "Armor"
+    And there is a trait with the title "Armor" and the user "user@example.com"
 
   Scenario: User can create an objective trait
     When I go to the root page
