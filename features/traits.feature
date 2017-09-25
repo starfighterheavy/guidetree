@@ -3,6 +3,9 @@ Feature: Traits
   I want to be able to give objectives traits,
   So that I can see what accomplishing each objective will get me.
 
+  Background:
+    Given I sign in
+
   Scenario: User can create a trait
     When I go to the root page
     And I click on "Traits"
@@ -15,7 +18,7 @@ Feature: Traits
     Then I should see "My new description"
 
   Scenario: User update a trait
-    Given there is a trait with the title "My trait"
+    Given there is a trait with the title "My trait" and the user "user@example.com"
     When I go to the root page
     And I click on "Traits"
     And I click on "My trait"
@@ -33,7 +36,7 @@ Feature: Traits
     Then I should see "Title can't be blank"
 
   Scenario: User delete can delete a trait
-    Given there is a trait with the title "My trait"
+    Given there is a trait with the title "My trait" and the user "user@example.com"
     When I go to the root page
     And I click on "Traits"
     And I click on "My trait"

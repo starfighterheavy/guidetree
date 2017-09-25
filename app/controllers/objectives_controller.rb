@@ -45,10 +45,10 @@ class ObjectivesController < ApplicationController
   end
 
   def load_objective
-    @objective = Objective.find(params[:id])
+    @objective = current_user.objectives.find(params[:id])
   end
 
   def load_tree
-    @tree = Tree.find(params[:tree_id])
+    @tree = current_user.trees.find(params[:tree_id])
   end
 end

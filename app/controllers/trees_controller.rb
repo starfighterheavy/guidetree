@@ -7,7 +7,7 @@ class TreesController < ApplicationController
   end
 
   def create
-    tree = Tree.new(tree_params)
+    tree = current_user.trees.new(tree_params)
     if tree.save
       redirect_to tree_path(tree.id)
     else
@@ -17,7 +17,7 @@ class TreesController < ApplicationController
   end
 
   def index
-    @trees = Tree.all
+    @trees = current_user.trees
   end
 
   def show
@@ -42,7 +42,7 @@ class TreesController < ApplicationController
   private
 
   def load_tree
-    @tree = Tree.find(params[:id])
+    @tree = current_user.trees.find(params[:id])
   end
 
   def tree_params

@@ -7,7 +7,7 @@ class TraitsController < ApplicationController
   end
 
   def create
-    trait = Trait.new(trait_params)
+    trait = current_user.traits.new(trait_params)
     if trait.save
       redirect_to traits_path
     else
@@ -17,7 +17,7 @@ class TraitsController < ApplicationController
   end
 
   def index
-    @traits = Trait.all
+    @traits = current_user.traits
   end
 
   def edit
@@ -46,6 +46,6 @@ class TraitsController < ApplicationController
   end
 
   def load_trait
-    @trait = Trait.find(params[:id])
+    @trait = current_user.traits.find(params[:id])
   end
 end
