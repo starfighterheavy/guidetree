@@ -22,12 +22,16 @@ body {
 
 .node-content {
   height: 100%;
-  padding: 20px;
+  padding: 10px;
   background-color: whitesmoke;
   box-sizing: border-box;
 
   &.node-completed-true {
     background-color: green;
+  }
+
+  h4 {
+    margin: 5px 0;
   }
 }
 
