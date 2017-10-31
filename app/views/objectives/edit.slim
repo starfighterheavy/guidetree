@@ -1,0 +1,15 @@
+- @objective = @resource
+= simple_form_for [@owner, @objective] do |f|
+  - if @parent
+    h2
+      = render "components/breadcrumb", links: [[@parent.title, objective_path(@parent)], ["New Child"]]
+    = f.hidden_field :parent_id, value: params[:parent_id]
+  - elsif @objective.persisted?
+    h2 Edit
+    = f.input :parent_id, collection: @objective.potential_parents, label: "Parent", selected: @objective.parent_id, include_blank: true
+  - else
+    h2 New Objective
+  = f.input :title
+  = f.input :description
+  = f.submit "Save"
+

@@ -2,6 +2,10 @@ When /^I log the page$/ do
   puts page.body
 end
 
+When 'I pry' do
+  binding.pry
+end
+
 Given 'I sign in' do
   steps %Q{
     Given there is a user with the email "user@example.com" and the password "Password1"
