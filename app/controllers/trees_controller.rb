@@ -1,3 +1,5 @@
+require 'node_tree'
+
 class TreesController < ApplicationController
   before_action :load_tree, except: [:new, :create, :index]
 
@@ -21,6 +23,7 @@ class TreesController < ApplicationController
   end
 
   def show
+    @tree = NodeTree.new(@tree)
   end
 
   def edit

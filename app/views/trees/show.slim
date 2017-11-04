@@ -2,7 +2,7 @@
 h1
   = render "components/breadcrumb", links: [["Home", trees_path], [@tree.name]]
 
-div.tree-container style="height: #{@tree.levels.first.sum(&:width)*250}px;"
+div.tree-container style="height: #{@tree.roots_width*250}px;"
   - @tree.levels.each_with_index do |level, index|
     div id="level_#{index}" class="level"
       - level.each do |node|
