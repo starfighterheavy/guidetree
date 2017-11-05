@@ -10,7 +10,7 @@ div.tree-container style="height: #{@tree.roots_width*250}px;"
           div class='node'
             - if node.id
               div class='node-content node-completed-#{node.completed?}'
-                h4 = link_to node.title, objective_path(node.id)
+                h4 = link_to node.title, tree_objective_path(@tree.id, node.id)
                 p = node.description
                 ul
                   - node.objective_traits.each do |trait|

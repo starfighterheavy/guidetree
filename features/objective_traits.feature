@@ -54,4 +54,4 @@ Feature: Objective Traits
     And I click on "0-A"
     And I click on "Add Trait"
     And I click on "Need a new trait?"
-    And I should see "Traits>New"
+    And I should see "New Trait"

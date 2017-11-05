@@ -1,16 +1,16 @@
-- breadcrumb :objective, @objective
+- breadcrumb :objective, objective
 h1= sanitize(breadcrumbs.to_s)
-p= @objective.description
-- if @objective.objective_traits.any?
+p= objective.description
+- if objective.objective_traits.any?
   ul
-    - @objective.objective_traits.each do |trait|
-      li= link_to "#{trait.amount >= 0 ? '+' : ''}#{trait.amount} #{trait.title}", edit_objective_objective_trait_path(objective_id: @objective, id: trait.id)
-p= link_to "Edit", edit_objective_path(@objective)
-p= link_to "Add Trait", new_objective_objective_trait_path(@objective)
-- if @objective.completed_at?
-  p Completed on #{@objective.completed_at}
-  p Note: #{@objective.completion_note}
+    - objective.objective_traits.each do |trait|
+      li= link_to "#{trait.amount >= 0 ? '+' : ''}#{trait.amount} #{trait.title}", edit_objective_objective_trait_path(objective_id: objective, id: trait.id)
+p= link_to "Edit", edit_tree_objective_path(tree, objective)
+p= link_to "Add Trait", new_objective_objective_trait_path(objective)
+- if objective.completed_at?
+  p Completed on #{objective.completed_at}
+  p Note: #{objective.completion_note}
 - else
-  p= link_to "Complete", new_objective_completion_path(objective_id: @objective.id)
-p= link_to "Delete", objective_path(@objective), method: :delete
-p= link_to "New Child", new_objective_path(parent_id: @objective.id, tree_id: @objective.tree_id || params[:tree_id])
+  p= link_to "Complete", new_objective_completion_path(objective_id: objective.id)
+p= link_to "Delete", tree_objective_path(tree, objective), method: :delete
+p= link_to "New Child", new_tree_objective_path(parent_id: objective.id, tree_id: objective.tree_id || params[:tree_id])

@@ -8,7 +8,7 @@ class Objectives::ObjectiveTraitsController < ApplicationController
   def update
     @objective_trait.assign_attributes(objective_trait_params)
     if @objective_trait.save
-      redirect_to objective_path(@objective)
+      redirect_to tree_objective_path(@objective.tree, @objective)
     else
       set_flash_error(@objective_trait)
       redirect_to edit_objective_objective_trait_path(objective_id: @objective_trait.id, id: @objective.id)
@@ -17,7 +17,7 @@ class Objectives::ObjectiveTraitsController < ApplicationController
 
   def destroy
     @objective_trait.destroy
-    redirect_to objective_path(@objective)
+    redirect_to tree_objective_path(@objective.tree, @objective)
   end
 
   def new
@@ -27,7 +27,7 @@ class Objectives::ObjectiveTraitsController < ApplicationController
   def create
     objective_trait = ObjectiveTrait.new(objective_trait_params)
     if objective_trait.save
-      redirect_to objective_path(@objective)
+      redirect_to tree_objective_path(@objective.tree, @objective)
     else
       set_flash_error(objective_trait)
       redirect_to new_objective_objective_trait_path(@objective)
