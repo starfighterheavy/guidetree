@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
-gem 'rails-rapido', path: '../rapido'
+gem 'rails-rapido', '0.3.3'
 gem 'kaminari'
 
 group :test do
