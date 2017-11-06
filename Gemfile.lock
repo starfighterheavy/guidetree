@@ -1,7 +1,7 @@
 PATH
   remote: ../rapido
   specs:
-    rails-rapido (0.3.2)
+    rails-rapido (0.3.3)
       kaminari (~> 1.1)
 
 GEM

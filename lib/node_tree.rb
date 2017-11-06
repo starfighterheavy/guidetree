@@ -16,10 +16,11 @@ class NodeTree
     @levels ||= begin
       levels_ary = []
       level = -1
-      begin
+      loop do
         level += 1
         levels_ary << nodes.select{ |node| node.level == level }
-      end until levels_ary[level].empty?
+        break if levels_ary[level].empty?
+      end
       levels_ary
     end
   end
