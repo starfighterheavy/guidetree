@@ -1,51 +1,25 @@
+require 'node_tree'
+require 'rapido'
+
 class TreesController < ApplicationController
-  before_action :load_tree, except: [:new, :create, :index]
+  include Rapido::Controller
+  include Rapido::AppController
+  include Rapido::AppViews
 
-  def new
-    @tree = Tree.new
-    render "form"
-  end
+  before_action :convert_to_node_tree, only: [:show]
+  before_action :convert_to_trees, only: [:index]
 
-  def create
-    tree = current_user.trees.new(tree_params)
-    if tree.save
-      redirect_to tree_path(tree.id)
-    else
-      flash[:error] = tree.errors.full_messages.join('.')
-      redirect_to new_tree_path
-    end
-  end
-
-  def index
-    @trees = current_user.trees
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    @tree.assign_attributes(tree_params)
-    unless @tree.save
-      flash[:error] = @tree.errors.full_messages.join('.')
-    end
-    redirect_to tree_path
-  end
-
-  def destroy
-    @tree.destroy
-    redirect_to trees_path
-  end
+  belongs_to_nothing!
+  attr_permitted :name
+  authority :current_user
 
   private
 
-  def load_tree
-    @tree = current_user.trees.find(params[:id])
+  def convert_to_trees
+    @trees = resource_collection
   end
 
-  def tree_params
-    params.require(:tree).permit(:name)
+  def convert_to_node_tree
+    @tree = NodeTree.new(resource)
   end
 end

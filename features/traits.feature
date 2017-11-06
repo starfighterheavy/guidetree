@@ -14,7 +14,6 @@ Feature: Traits
     And I fill in "Description" with "My new description"
     And I press "Save"
     Then I should see "My new title"
-    When I click on "My new title"
     Then I should see "My new description"
 
   Scenario: User update a trait

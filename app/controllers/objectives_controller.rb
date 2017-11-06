@@ -1,54 +1,35 @@
 class ObjectivesController < ApplicationController
-  before_action :load_objective, except: [:new, :create]
-  before_action :load_tree, only: [:create, :new]
+  include Rapido::Controller
+  include Rapido::AppController
+  include Rapido::AppViews
 
-  def new
-    @objective = Objective.new(tree: @tree)
-    @parent = Objective.find(params[:parent_id]) if params[:parent_id]
-    render "form"
-  end
+  belongs_to :tree
+  authority :current_user
+  attr_permitted :title, :description, :parent_id
 
-  def create
-    @objective = @tree.objectives.new(objective_params)
-    unless @objective.save
-      flash[:error] = @objective.errors.full_messages.join(".")
-    end
-    redirect_to objective_path(@objective)
-  end
+  helper_method :objective
+  helper_method :tree
 
-  def show
-  end
-
-  def edit
-    render "form"
-  end
-
-  def update
-    @objective.assign_attributes(objective_params)
-    unless @objective.save
-      flash[:error] = @objective.errors.full_messages.join(".")
-    end
-    redirect_to tree_path(@objective.tree.id)
-  end
-
-  def destroy
-    unless @objective.destroy
-      flash[:error] = @objective.errors.full_messages.join(".")
-    end
-    redirect_to tree_path(@objective.tree.id)
-  end
+  before_action :load_parent, only: [:new, :edit]
 
   private
 
-  def objective_params
-    params.require(:objective).permit(:parent_id, :title, :description)
+  def load_parent
+    return unless params[:parent_id]
+    @parent = tree.objectives.find(params[:parent_id])
   end
 
-  def load_objective
-    @objective = current_user.objectives.find(params[:id])
+  def after_create_path(*)
+    tree_path(tree)
+  end
+  alias after_delete_path after_create_path
+  alias after_update_path after_create_path
+
+  def objective
+    @resource || resource
   end
 
-  def load_tree
-    @tree = current_user.trees.find(params[:tree_id])
+  def tree
+    @owner || owner
   end
 end
