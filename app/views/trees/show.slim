@@ -16,4 +16,4 @@ div.tree-container style="height: #{@tree.roots_width*250}px;"
                   - node.objective_traits.each do |trait|
                     li= "#{trait.amount >= 0 ? '+' : ''}#{trait.amount} #{trait.title}"
 
-p Share your tree: #{tree_path(@tree.public_uuid)}
+p Share your tree: #{tree_url(@tree.public_uuid)}
