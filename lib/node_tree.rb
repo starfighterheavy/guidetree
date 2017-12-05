@@ -1,7 +1,7 @@
 class NodeTree
   attr_reader :tree
 
-  delegate :id, :name, to: :tree
+  delegate :id, :name, :public_uuid, to: :tree
 
   def initialize(tree)
     @tree = tree

@@ -15,6 +15,12 @@ class TreesController < ApplicationController
 
   private
 
+  def skip_authentication?
+    @resource = Tree.find_by(public_uuid: params[:id])
+    return true if @resource
+    super
+  end
+
   def convert_to_trees
     @trees = resource_collection
   end

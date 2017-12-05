@@ -11,3 +11,7 @@ Given 'I sign in' do
     And I press "Log in"
   }
 end
+
+Given /^I visit "([^"]*)"$/ do |path|
+  visit path
+end
