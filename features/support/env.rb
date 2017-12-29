@@ -1,7 +1,10 @@
 require 'cucumber/rails'
 require 'rspec/matchers'
-require 'spreewald/all_steps'
 require 'cucumber/api_steps'
+require 'cucumber/sammies/step_definitions/navigation_steps'
+require 'cucumber/sammies/step_definitions/form_steps'
+require 'cucumber/sammies/step_definitions/content_steps'
+require 'cucumber/persona/step_definitions/persona_steps'
 
 require 'simplecov'
 SimpleCov.start do
@@ -23,5 +26,3 @@ rescue NameError
 end
 
 Cucumber::Rails::Database.javascript_strategy = :truncation
-
-Cucumber::Factory.add_steps(self)

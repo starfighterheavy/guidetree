@@ -8,6 +8,12 @@ class Objective < ActiveRecord::Base
   has_many :other_children, through: :parent_relationships
   has_many :objective_traits
 
+  before_validation do
+    if parent
+      self.tree = parent.tree
+    end
+  end
+
   before_destroy :check_for_children
 
   def self.roots

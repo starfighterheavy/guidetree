@@ -4,12 +4,8 @@ Feature: Objectives
   So that I can easily modify my tree.
 
   Background:
-    Given I sign in
-    And there is a tree with the name "My Tree" and the user "user@example.com"
-    And there is an objective with the title "0-A" and the tree "My Tree"
-    And there is an objective with the title "1-A" and the parent "0-A" and the tree "My Tree"
-    And there is an objective with the title "1-B" and the parent "0-A" and the tree "My Tree"
-    And there is an objective with the title "2-A-A" and the parent "1-A" and the tree "My Tree"
+    Given I am "New User"
+    And I sign in
 
   Scenario: User can create a new root objective
     When I go to the root page
@@ -38,8 +34,6 @@ Feature: Objectives
     Then I should see that node "My new title" is in level 2 and has width of 1
 
   Scenario: User can update an objective
-    Given there is a tree with the name "Other Tree" and the user "user@example.com"
-    And there is an objective with the title "Other-A" and the tree "Other Tree"
     When I go to the root page
     And I click on "My Tree"
     And I click on "2-A-A"
