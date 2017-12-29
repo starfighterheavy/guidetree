@@ -39,7 +39,7 @@ gem 'kaminari'
 group :test do
   gem 'cucumber-rails', require: false
 
-  gem 'cucumber-sammies', path: '../cucumber-sammies'
+  gem 'cucumber-sammies', '~> 0.1'
 
   gem 'cucumber-api-steps'
 

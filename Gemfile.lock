@@ -5,11 +5,6 @@ GIT
     cucumber-inventory (0.1.0)
       rails (>= 5.1)
 
-PATH
-  remote: ../cucumber-sammies
-  specs:
-    cucumber-sammies (0.1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,6 +93,7 @@ GEM
       mime-types (>= 1.17, < 4)
       nokogiri (~> 1.5)
       railties (>= 4, < 5.2)
+    cucumber-sammies (0.1.1)
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     database_cleaner (1.6.2)
@@ -281,7 +277,7 @@ DEPENDENCIES
   cucumber-inventory!
   cucumber-persona
   cucumber-rails
-  cucumber-sammies!
+  cucumber-sammies (~> 0.1)
   database_cleaner
   devise (~> 4.4)
   dotenv-rails
